@@ -13,6 +13,9 @@ public class MascotaService {
     @Autowired
     private MascotaRepository mascotaRepository;
 
+    public List<Mascota> verMascotas() {
+        return mascotaRepository.findAll();
+    }
     public List<Mascota> listarMascotas() {
         return mascotaRepository.findAll();
     }

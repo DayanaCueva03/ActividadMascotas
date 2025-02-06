@@ -1,0 +1,56 @@
+<!-- Encabezado Común -->
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Registros</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+<nav class="bg-gray-800 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="/" class="text-2xl font-bold hover:text-yellow-400">Tienda de Mascotas</a>
+        <ul class="flex space-x-6">
+            <li><a href="/" class="hover:text-yellow-400">Inicio</a></li>
+            <li><a th:href="@{/vistaMascotas}" class="hover:text-yellow-400">Mascotas</a></li>
+            <li><a th:href="@{/vistaClientes}" class="hover:text-yellow-400">Clientes</a></li>
+            <li><a th:href="@{/vistaProductos}" class="hover:text-yellow-400">Productos</a></li>
+            <li><a th:href="@{/listaMascota}" class="hover:text-yellow-400">Lista Mascotas</a></li>
+            <li><a th:href="@{/listaCliente}" class="hover:text-yellow-400">Lista Clientes</a></li>
+            <li><a th:href="@{/listaProducto}" class="hover:text-yellow-400">Lista Productos</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="container mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
+    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Lista de Mascotas</h2>
+    <table class="w-full border-collapse border border-gray-300">
+        <thead>
+        <tr class="bg-gray-200">
+            <th class="border p-2">ID</th>
+            <th class="border p-2">Nombre</th>
+            <th class="border p-2">Tipo</th>
+            <th class="border p-2">Edad</th>
+            <th class="border p-2">Raza</th>
+            <th class="border p-2">Opciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="mascota: ${mascotas}" class="border">
+            <td class="p-2" th:text="${mascota.id}"></td>
+            <td class="p-2" th:text="${mascota.nombre}"></td>
+            <td class="p-2" th:text="${mascota.tipo}"></td>
+            <td class="p-2" th:text="${mascota.edad}"></td>
+            <td class="p-2" th:text="${mascota.raza}"></td>
+            <td class="p-2 flex space-x-2">
+                <a th:href="@{/editarMascota/} + ${mascota.id}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-3 rounded">Editar</a>
+                <a th:href="@{/eliminarMascota/} + ${mascota.id}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="mt-4 text-center">
+        <a th:href="@{/pages/formularioMascota}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Nueva Mascota</a>
+    </div>
+</div>

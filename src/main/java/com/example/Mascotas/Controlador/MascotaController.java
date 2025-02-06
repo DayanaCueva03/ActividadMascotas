@@ -30,24 +30,41 @@ public class MascotaController {
     }
 
     // LISTADO DE MASCOTAS
-    @GetMapping("/listaMascotas")
+    @GetMapping("/vistaMascotas")
+    public String vistaMascotas(Model model) {
+        model.addAttribute("mascotas", mascotaService.verMascotas());
+        return "pages/vistaMascota";
+    }
+    @GetMapping("/listaMascota")
     public String listarMascotas(Model model) {
         model.addAttribute("mascotas", mascotaService.listarMascotas());
-        return "pages/vistaMascota";
+        return "pages/listadoMascotas";
     }
 
     // LISTADO DE CLIENTES
-    @GetMapping("/listaCliente")
-    public String listadoCliente(Model model) {
-        model.addAttribute("cliente", new Cliente());
+    @GetMapping("/vistaClientes")
+    public String vistaCliente(Model model) {
+        model.addAttribute("mascotas", mascotaService.verMascotas());
         return "pages/vistaCliente";
     }
 
+    @GetMapping("/listaCliente")
+    public String listadoCliente(Model model) {
+        model.addAttribute("cliente", new Cliente());
+        return "pages/listadoClientes";
+    }
+
     // LISTADO DE PRODUCTOS
-    @GetMapping("/listaProductos")
+    @GetMapping("/vistaProductos")
+    public String vistaProducto(Model model) {
+        model.addAttribute("mascotas", mascotaService.verMascotas());
+        return "pages/vistaProducto";
+    }
+
+    @GetMapping("/listaProducto")
     public String listadoProductos(Model model) {
         model.addAttribute("producto", new Producto());
-        return "pages/vistaProducto";
+        return "pages/listadoProductos";
     }
 
     // Crear una nueva mascota (mostrar formulario)
