@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio - Tienda de Mascotas</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+</head>
+<body class="bg-gray-100">
+
+<nav class="bg-gray-800 text-white p-4">
+  <div class="container mx-auto flex justify-between items-center">
+    <a href="/" class="text-2xl font-bold hover:text-yellow-400">Tienda de Mascotas</a>
+    <ul class="flex space-x-6">
+      <li><a href="/" class="hover:text-yellow-400">Inicio</a></li>
+      <li><a th:href="@{/listaMascotas}" class="hover:text-yellow-400">Mascotas</a></li>
+      <li><a th:href="@{/listaCliente}" class="hover:text-yellow-400">Clientes</a></li>
+      <li><a th:href="@{/listaProductos}" class="hover:text-yellow-400">Productos</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="relative h-96 overflow-hidden">
+  <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    <h1 class="text-6xl font-bold text-white">Bienvenidos a nuestra Tienda de Mascotas</h1>
+  </div>
+  <img th:src="@{imagenes/portada.jpg}" alt="Mascotas" class="w-full h-full object-cover">
+</div>
+
+<div class="container mx-auto p-8">
+  <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">Productos Destacados</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Tarjeta 1 -->
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img th:src="@{imagenes/tres.jpg}" alt="Producto 1" class="w-full h-48 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-bold mb-2">Alimento para Perros</h3>
+        <p class="text-gray-700 mb-4">Alimento premium para perros de todas las razas, rico en nutrientes y vitaminas.</p>
+        <p class="text-gray-900 font-bold mt-2">$15.99</p>
+        <a href="#" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-400">Comprar</a>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img th:src="@{imagenes/uno.jpg}" alt="Producto 2" class="w-full h-48 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-bold mb-2">Juguetes para Gatos</h3>
+        <p class="text-gray-700 mb-4">Juguetes divertidos y seguros para tu gato, hechos con materiales no tóxicos.</p>
+        <p class="text-gray-900 font-bold mt-2">$9.99</p>
+        <a href="#" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-400">Comprar</a>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img th:src="@{imagenes/dos.jpg}" alt="Producto 3" class="w-full h-48 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-bold mb-2">Camas para Mascotas</h3>
+        <p class="text-gray-700 mb-4">Camas cómodas y duraderas para perros y gatos, disponibles en varios tamaños.</p>
+        <p class="text-gray-900 font-bold mt-2">$29.99</p>
+        <a href="#" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-400">Comprar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="bg-gray-200 py-12">
+  <div class="container mx-auto p-4">
+    <h2 class="text-3xl font-bold mb-8 text-center">Lo que dicen nuestros clientes</h2>
+    <div class="fancybox" data-fancybox="testimonios" style="display: flex; justify-content: center; gap: 20px;">
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <p class="text-gray-700 italic">"¡Excelente servicio! Mi perro ama su nueva cama y los productos son de alta calidad."</p>
+        <p class="text-gray-900 font-bold mt-4">- Juan Pérez</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <p class="text-gray-700 italic">"Los juguetes para mi gato son increíbles. ¡Los recomiendo totalmente!"</p>
+        <p class="text-gray-900 font-bold mt-4">- María López</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <p class="text-gray-700 italic">"La atención al cliente es excepcional y los precios son muy competitivos."</p>
+        <p class="text-gray-900 font-bold mt-4">- Carlos Rodríguez</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="modal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
+    <h3 class="text-2xl font-bold mb-4">¡Oferta Especial!</h3>
+    <p class="text-gray-700 mb-4">Aprovecha un descuento del 10% en tu primera compra. Usa el código <strong>BIENVENIDO</strong> al finalizar tu compra.</p>
+    <button id="cerrarModal" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-400">Cerrar</button>
+  </div>
+</div>
+
+
+<div class="grid gap-4">
+  <div class="flex justify-center">
+    <img class="h-auto max-w-full rounded-lg" th:src="@{imagenes/cuatro.jpg}" alt="">
+  </div>
+
+  <div class="grid grid-cols-5 gap-4">
+    <div>
+      <img class="h-auto max-w-full rounded-lg" th:src="@{imagenes/cinco.jpg}" alt="">
+    </div>
+    <div>
+      <img class="h-auto max-w-full rounded-lg" th:src="@{imagenes/siete.jpg}" alt="">
+    </div>
+    <div>
+      <img class="h-auto max-w-full rounded-lg" th:src="@{imagenes/seis.jpg}" alt="">
+    </div>
+    <div>
+      <img class="h-auto max-w-full rounded-lg" th:src="@{imagenes/diez.jpg}" alt="">
+    </div>
+    <div>
+      <img class="h-auto max-w-full rounded-lg" th:src="@{imagenes/nueve.jpg}" alt="">
+    </div>
+  </div>
+</div>
+
+<footer class="bg-gray-800 text-white py-8">
+  <div class="container mx-auto p-4 text-center">
+    <p class="mb-4">© 2023 Tienda de Mascotas. Todos los derechos reservados.</p>
+    <ul class="flex justify-center space-x-4">
+      <li><a href="#" class="hover:text-yellow-400">Términos y condiciones</a></li>
+      <li><a href="#" class="hover:text-yellow-400">Política de privacidad</a></li>
+      <li><a href="#" class="hover:text-yellow-400">Contacto</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  // Modal display logic
+  document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(function() {
+      document.getElementById("modal").classList.remove("hidden");
+    }, 3000); // Show modal after 3 seconds
+
+    document.getElementById("cerrarModal").addEventListener("click", function() {
+      document.getElementById("modal").classList.add("hidden");
+    });
+  });
+</script>
+
+</body>
+</html>

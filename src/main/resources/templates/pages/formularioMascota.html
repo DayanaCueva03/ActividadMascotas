@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Mascotas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+<nav class="bg-gray-800 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="/" class="text-2xl font-bold hover:text-yellow-400 transition duration-300">Tienda de Mascotas</a>
+        <ul class="flex space-x-6">
+            <li><a href="/" class="hover:text-yellow-400 transition duration-300">Inicio</a></li>
+            <li><a th:href="@{/listaMascotas}" class="hover:text-yellow-400 transition duration-300">Mascotas</a></li>
+            <li><a th:href="@{/listaCliente}" class="hover:text-yellow-400 transition duration-300">Clientes</a></li>
+            <li><a th:href="@{/listaProductos}" class="hover:text-yellow-400 transition duration-300">Productos</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mx-auto mt-8 p-4 bg-white rounded-lg shadow-lg flex-grow">
+    <h2 class="text-2xl font-bold mb-6 text-gray-800">Registro de Mascota</h2>
+    <form th:action="@{/guardar}" method="post" th:object="${mascota}">
+        <div class="mb-4">
+            <input type="number" class="form-control hidden" id="id-codigo" th:field="*{id}">
+        </div>
+
+        <div class="mb-4">
+            <label for="id-nombre" class="block text-gray-700 font-medium mb-2" style="font-weight: 600; color: #374151;">Nombre</label>
+            <input type="text" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400" id="id-nombre" th:field="*{nombre}" style="border-radius: 0.375rem; padding: 0.625rem; border: 1px solid #D1D5DB; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; focus:border-blue-500 focus:ring-1 focus:ring-blue-200;">
+            <div th:if="${#fields.hasErrors('nombre')}" class="text-red-500 text-sm mt-1">
+                <p th:errors="*{nombre}"></p>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="id-tipo" class="block text-gray-700 font-medium mb-2" style="font-weight: 600; color: #374151;">Tipo</label>
+            <input type="text" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400" id="id-tipo" th:field="*{tipo}" style="border-radius: 0.375rem; padding: 0.625rem; border: 1px solid #D1D5DB; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; focus:border-blue-500 focus:ring-1 focus:ring-blue-200;">
+            <div th:if="${#fields.hasErrors('tipo')}" class="text-red-500 text-sm mt-1">
+                <p th:errors="*{tipo}"></p>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="id-edad" class="block text-gray-700 font-medium mb-2" style="font-weight: 600; color: #374151;">Edad</label>
+            <input type="number" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400" id="id-edad" th:field="*{edad}" style="border-radius: 0.375rem; padding: 0.625rem; border: 1px solid #D1D5DB; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; focus:border-blue-500 focus:ring-1 focus:ring-blue-200;">
+            <div th:if="${#fields.hasErrors('edad')}" class="text-red-500 text-sm mt-1">
+                <p th:errors="*{edad}"></p>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="id-raza" class="block text-gray-700 font-medium mb-2" style="font-weight: 600; color: #374151;">Raza</label>
+            <input type="text" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400" id="id-raza" th:field="*{raza}" style="border-radius: 0.375rem; padding: 0.625rem; border: 1px solid #D1D5DB; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; focus:border-blue-500 focus:ring-1 focus:ring-blue-200;">
+            <div th:if="${#fields.hasErrors('raza')}" class="text-red-500 text-sm mt-1">
+                <p th:errors="*{raza}"></p>
+            </div>
+        </div>
+
+        <button type="submit" class="bg-yellow-400 text-gray-800 px-6 py-2 rounded-lg hover:bg-yellow-500 transition duration-300" style="background-color: #FBBF24; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 0.5rem; cursor: pointer; transition: background-color 0.15s ease-in-out;">Guardar</button>
+    </form>
+</div>
+
+<footer class="bg-gray-800 text-white py-6 mt-8 flex-shrink-0">
+    <div class="container mx-auto text-center">
+        <p class="mb-2">© 2023 Tienda de Mascotas. Todos los derechos reservados.</p>
+        <ul class="flex justify-center space-x-4">
+            <li><a href="#" class="hover:text-yellow-400 transition duration-300">Términos y condiciones</a></li>
+            <li><a href="#" class="hover:text-yellow-400 transition duration-300">Política de privacidad</a></li>
+            <li><a href="#" class="hover:text-yellow-400 transition duration-300">Contacto</a></li>
+        </ul>
+    </div>
+</footer>
+
+<button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" id="scroll-top" class="scroll-top">
+    ↑
+</button>
+
+<script>
+    window.onscroll = function() {
+        const scrollTopBtn = document.getElementById('scroll-top');
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            scrollTopBtn.style.display = 'block';
+        } else {
+            scrollTopBtn.style.display = 'none';
+        }
+    };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista de Productos</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+<nav class="bg-gray-800 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="/" class="text-2xl font-bold hover:text-yellow-400">Tienda de Mascotas</a>
+        <ul class="flex space-x-6">
+            <li><a href="/" class="hover:text-yellow-400">Inicio</a></li>
+            <li><a th:href="@{/listaMascotas}" class="hover:text-yellow-400">Mascotas</a></li>
+            <li><a th:href="@{/listaCliente}" class="hover:text-yellow-400">Clientes</a></li>
+            <li><a th:href="@{/listaProductos}" class="hover:text-yellow-400">Productos</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mx-auto p-4">
+    <h1 class="text-4xl font-bold text-gray-900 mb-6 text-center">Productos para Mascotas</h1>
+
+    <div class="mb-6">
+        <label for="filter" class="font-semibold text-gray-700">Filtrar por categoría</label>
+        <select id="filter" class="mt-2 p-2 rounded-md">
+            <option value="todos">Todos</option>
+            <option value="perros">Alimentos para Perros</option>
+            <option value="gatos">Alimentos para Gatos</option>
+            <option value="accesorios">Accesorios</option>
+        </select>
+        <a th:href="@{/vistaProducto}" class="bg-green-500 text-white px-6 py-3 rounded mt-6 inline-block hover:bg-green-400">Añadir Producto</a>
+
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+        <div class="product-card bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-transform duration-300">
+            <img th:src="@{/imagenes/catorce.jpg}" alt="Alimento para perros" class="rounded-lg w-full">
+            <h2 class="text-xl font-bold mt-4">Alimento Premium para Perros</h2>
+            <p class="text-gray-600 mt-2">Nutrición completa y balanceada para una vida saludable.</p>
+            <p class="text-blue-600 font-bold mt-2">$25.99</p>
+            <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Comprar</button>
+        </div>
+
+        <div class="product-card bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-transform duration-300">
+            <img th:src="@{/imagenes/quince.jpg}" alt="Alimento para gatos" class="rounded-lg w-full">
+            <h2 class="text-xl font-bold mt-4">Comida Natural para Gatos</h2>
+            <p class="text-gray-600 mt-2">Ingredientes frescos y naturales para una mejor digestión.</p>
+            <p class="text-blue-600 font-bold mt-2">$19.99</p>
+            <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Comprar</button>
+        </div>
+
+        <div class="product-card bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-transform duration-300">
+            <img th:src="@{/imagenes/camagato.jpg}" alt="Cama para mascotas" class="rounded-lg w-full">
+            <h2 class="text-xl font-bold mt-4">Cama Suave para Mascotas</h2>
+            <p class="text-gray-600 mt-2">Diseñada para ofrecer el máximo confort y descanso.</p>
+            <p class="text-blue-600 font-bold mt-2">$29.99</p>
+            <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Comprar</button>
+        </div>
+
+        <div class="product-card bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-transform duration-300">
+            <img th:src="@{/imagenes/huesos.jpg}" alt="Alimento Premium para Perros" class="rounded-lg w-full">
+            <h2 class="text-xl font-bold mt-4">Huesos para Perros</h2>
+            <p class="text-gray-600 mt-2">Perfecto para mantener la energía y la vitalidad de tu perro.</p>
+            <p class="text-blue-600 font-bold mt-2">$22.99</p>
+            <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Comprar</button>
+        </div>
+
+        <div class="product-card bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-transform duration-300">
+            <img th:src="@{/imagenes/cajas.jpg}" alt="Cama ortopédica para perros" class="rounded-lg w-full">
+            <h2 class="text-xl font-bold mt-4">Cama Ortopédica para Perros</h2>
+            <p class="text-gray-600 mt-2">Ideal para perros mayores o con problemas articulares.</p>
+            <p class="text-blue-600 font-bold mt-2">$49.99</p>
+            <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Comprar</button>
+        </div>
+
+        <div class="product-card bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-transform duration-300">
+            <img th:src="@{/imagenes/corta.jpg}" alt="Juguete para perros" class="rounded-lg w-full">
+            <h2 class="text-xl font-bold mt-4">Corta Uñas para Perros</h2>
+            <p class="text-gray-600 mt-2">Estimula la mente y mantiene activo a tu perro.</p>
+            <p class="text-blue-600 font-bold mt-2">$15.99</p>
+            <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Comprar</button>
+        </div>
+    </div>
+
+
+    <div class="bg-blue-50 p-6 rounded-lg mt-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center">¿Por qué elegir nuestros productos?</h2>
+        <div class="grid md:grid-cols-3 gap-6 text-center">
+            <div class="p-4">
+                <img src="https://cdn-icons-png.flaticon.com/128/616/616490.png" class="w-16 mx-auto">
+                <h3 class="text-lg font-semibold mt-2">Alta Calidad</h3>
+                <p class="text-gray-600">Nuestros productos están elaborados con ingredientes premium.</p>
+            </div>
+            <div class="p-4">
+                <img src="https://cdn-icons-png.flaticon.com/128/2913/2913940.png" class="w-16 mx-auto">
+                <h3 class="text-lg font-semibold mt-2">100% Naturales</h3>
+                <p class="text-gray-600">Sin aditivos artificiales ni conservantes dañinos.</p>
+            </div>
+            <div class="p-4">
+                <img src="https://cdn-icons-png.flaticon.com/128/2913/2913963.png" class="w-16 mx-auto">
+                <h3 class="text-lg font-semibold mt-2">Aprobado por Veterinarios</h3>
+                <p class="text-gray-600">Recomendado por expertos en el cuidado de mascotas.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center">Explora más productos</h2>
+        <div class="flex overflow-x-auto space-x-4 p-4">
+            <img th:src="@{/imagenes/doce.jpg}" class="rounded-lg shadow-lg w-64">
+            <img th:src="@{/imagenes/trece.jpg}" class="rounded-lg shadow-lg w-64">
+            <img th:src="@{/imagenes/comidap.jpg}" class="rounded-lg shadow-lg w-64">
+            <img th:src="@{/imagenes/comidag.jpg}" class="rounded-lg shadow-lg w-64">
+            <img th:src="@{/imagenes/cono.jpg}" class="rounded-lg shadow-lg w-64">
+
+        </div>
+    </div>
+
+
+    <div class="bg-gray-800 text-white p-6 rounded-lg mt-8 text-center">
+        <h2 class="text-2xl font-bold mb-4">¡Suscríbete para recibir ofertas exclusivas!</h2>
+        <p class="text-gray-300">Recibe descuentos y novedades sobre nuestros productos para mascotas.</p>
+        <div class="mt-4">
+            <input type="email" placeholder="Tu correo electrónico" class="p-2 rounded-lg text-black w-1/2">
+            <button class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Suscribirse</button>
+        </div>
+    </div>
+</div>
+
+<footer class="bg-gray-800 text-white py-8 mt-8">
+    <div class="container mx-auto p-4 text-center">
+        <p class="mb-4">© 2024 Tienda de Mascotas. Todos los derechos reservados.</p>
+        <ul class="flex justify-center space-x-4">
+            <li><a href="#" class="hover:text-yellow-400">Términos y condiciones</a></li>
+            <li><a href="#" class="hover:text-yellow-400">Política de privacidad</a></li>
+            <li><a href="#" class="hover:text-yellow-400">Contacto</a></li>
+        </ul>
+    </div>
+</footer>
+
+</body>
+</html>

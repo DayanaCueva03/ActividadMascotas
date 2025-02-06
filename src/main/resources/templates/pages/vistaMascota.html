@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista de Mascotas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+<nav class="bg-gray-800 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="/" class="text-2xl font-bold hover:text-yellow-400">Tienda de Mascotas</a>
+        <ul class="flex space-x-6">
+            <li><a href="/" class="hover:text-yellow-400">Inicio</a></li>
+            <li><a th:href="@{/listaMascotas}" class="hover:text-yellow-400">Mascotas</a></li>
+            <li><a th:href="@{/listaCliente}" class="hover:text-yellow-400">Clientes</a></li>
+            <li><a th:href="@{/listaProductos}" class="hover:text-yellow-400">Productos</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mx-auto p-8 text-center">
+    <h1 class="text-4xl font-bold mb-6">Adopta tu Mascota</h1>
+    <p class="text-lg mb-6">Encuentra el compañero perfecto para ti. Tenemos perros, gatos y más esperando un hogar amoroso.</p>
+    <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg shadow-md p-6 text-center">
+            <img th:src="@{/imagenes/perro.jpg}" alt="Perro en adopción" class="w-full h-48 object-cover rounded-md mb-4">
+            <h3 class="text-xl font-semibold">Firulais</h3>
+            <p class="text-gray-700">Juguetón y cariñoso, busca un hogar donde correr y jugar.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-6 text-center">
+            <img th:src="@{/imagenes/gato.jpg}" alt="Gato en adopción" class="w-full h-48 object-cover rounded-md mb-4">
+            <h3 class="text-xl font-semibold">Mishito</h3>
+            <p class="text-gray-700">Dulce y tranquilo, perfecto para acurrucarse en casa.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-6 text-center">
+            <img th:src="@{/imagenes/conejo.jpg}" alt="Conejo en adopción" class="w-full h-48 object-cover rounded-md mb-4">
+            <h3 class="text-xl font-semibold">Bunny</h3>
+            <p class="text-gray-700">Tierno y pequeño, ideal para un hogar tranquilo.</p>
+        </div>
+    </div>
+    <a th:href="@{/vistaMascota}" class="bg-green-500 text-white px-6 py-3 rounded mt-6 inline-block hover:bg-green-400">Añadir Mascota</a>
+</div>
+
+<div class="container mx-auto p-4">
+    <h1 class="text-4xl font-bold mb-4">Adopta tu mascota</h1>
+
+    <p class="text-lg mb-6">En nuestra tienda, encontrarás una variedad de mascotas adorables que están buscando un hogar amoroso.  Desde perros juguetones hasta gatos cariñosos, tenemos el compañero perfecto para ti.</p>
+
+
+
+    <section class="bg-white dark:bg-gray-900">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
+            <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12 mb-8 flex flex-col lg:flex-row items-center">
+                <!-- Contenedor de texto -->
+                <div class="lg:w-1/2">
+                    <a href="#" class="bg-blue-100 text-blue-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-blue-400 mb-2">
+                        <svg class="w-2.5 h-2.5 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 14">
+                            <path d="M11 0H2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm8.585 1.189a.994.994 0 0 0-.9-.138l-2.965.983a1 1 0 0 0-.685.949v8a1 1 0 0 0 .675.946l2.965 1.02a1.013 1.013 0 0 0 1.032-.242A1 1 0 0 0 20 12V2a1 1 0 0 0-.415-.811Z"/>
+                        </svg>
+                        Tutorial
+                    </a>
+                    <h1 class="text-gray-900 dark:text-white text-3xl md:text-5xl font-extrabold mb-2">¿Un nuevo miembro en la familia?</h1>
+                    <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-6">Adoptar un perro o un gato; traer un animal de familia a casa es ante todo UN ACTO DE RESPONSABILIDAD.</p>
+                    <a href="#" class="inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+                        Leer Más
+                        <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="lg:w-1/2 flex justify-center mt-6 lg:mt-0">
+                    <img th:src="@{/imagenes/imagens.jpg}" alt="Mascotas adoptadas" class="rounded-lg shadow-lg w-full max-w-md">
+                </div>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12">
+                <a href="#" class="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 mb-2">
+                    <svg class="w-2.5 h-2.5 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                        <path d="M17 11h-2.722L8 17.278a5.512 5.512 0 0 1-.9.722H17a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1ZM6 0H1a1 1 0 0 0-1 1v13.5a3.5 3.5 0 1 0 7 0V1a1 1 0 0 0-1-1ZM3.5 15.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM16.132 4.9 12.6 1.368a1 1 0 0 0-1.414 0L9 3.55v9.9l7.132-7.132a1 1 0 0 0 0-1.418Z"/>
+                    </svg>
+                    Design
+                </a>
+                <h2 class="text-gray-900 dark:text-white text-3xl font-extrabold mb-2">Reflexiones importantes para el/la adoptante</h2>
+                <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">Los animales de familia no simplemente “existen”; están ahí para acompañarnos y para estar acompañados. Mantener esta dinámica no siempre será una tarea sencilla; estar cansado/a, enfadado/a, etc. no son excusa. </p>
+                <img th:src="@{/imagenes/ocho.jpg}" alt="Conejo en adopción" class="w-full h-48 object-cover rounded-md mb-4">
+                <a href="#" class="text-blue-600 dark:text-blue-500 hover:underline font-medium text-lg inline-flex items-center">Leer Más
+                    <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12">
+                <a href="#" class="bg-purple-100 text-purple-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-purple-400 mb-2">
+                    <svg class="w-2.5 h-2.5 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4 1 8l4 4m10-8 4 4-4 4M11 1 9 15"/>
+                    </svg>Un perro viviendo en un jardín o patio, en plan vigilante de seguridad solitario, que ve a su familia una vez al día o a la semana, cuando le pone la comida y agua, es un animal condenado a padecer muy graves alteraciones de conducta, y por ello está considerado como maltrato  y violación de las libertades del Bienestar Animal.
+                    Code
+                </a>
+                <h2 class="text-gray-900 dark:text-white text-3xl font-extrabold mb-2">¿HAY LUGAR PARA EL O ELLA EN TU HOGAR?</h2>
+                <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">Un perro viviendo en un jardín o patio, en plan vigilante de seguridad solitario, que ve a su familia una vez al día o a la semana, cuando le pone la comida y agua, es un animal condenado a padecer muy graves alteraciones de conducta, y por ello está considerado como maltrato  y violación de las libertades del Bienestar Animal. </p>
+                <img th:src="@{/imagenes/perroconejo.jpg}" alt="Conejo en adopción" class="w-full h-48 object-cover rounded-md mb-4">
+                <a href="#" class="text-blue-600 dark:text-blue-500 hover:underline font-medium text-lg inline-flex items-center">Leer Más
+                    <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+</div>
+</section>
+
+
+<section class="mt-12 px-6 md:px-16 lg:px-24 py-12 bg-gray-100 rounded-lg shadow-lg">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">¿Por qué adoptar?</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition duration-300">
+            <h3 class="text-xl font-semibold text-blue-900 mb-3">Un hogar para siempre</h3>
+            <p class="text-gray-700">Al adoptar, le das a una mascota una segunda oportunidad de tener un hogar lleno de amor y seguridad.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition duration-300">
+            <h3 class="text-xl font-semibold text-green-900 mb-3">Compañía incondicional</h3>
+            <p class="text-gray-700">Las mascotas ofrecen amor, compañía y apoyo incondicional. Son excelentes compañeros para todas las edades.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition duration-300">
+            <h3 class="text-xl font-semibold text-purple-900 mb-3">Beneficios para la salud</h3>
+            <p class="text-gray-700">Tener una mascota puede reducir el estrés, la ansiedad y fomentar un estilo de vida más activo.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition duration-300">
+            <h3 class="text-xl font-semibold text-red-900 mb-3">Ayudas a la comunidad</h3>
+            <p class="text-gray-700">Al adoptar, liberas espacio en los refugios y contribuyes a reducir la sobrepoblación de animales sin hogar.</p>
+        </div>
+    </div>
+</section>
+
+<section class="mt-12 px-6 md:px-16 lg:px-24 py-12 bg-white rounded-lg shadow-lg">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">¿Cómo adoptar?</h2>
+    <p class="text-lg text-gray-700 text-center mb-8">El proceso de adopción es sencillo. Visita nuestra tienda, conoce a nuestras mascotas y deja que nuestro equipo te ayude a encontrar tu compañero ideal.</p>
+    <div class="max-w-3xl mx-auto">
+        <ul class="list-disc pl-6 text-lg text-gray-700 space-y-3">
+            <li class="flex items-center gap-2"><span class="text-blue-500 text-xl">✔</span> Visita nuestra tienda y conoce a las mascotas disponibles.</li>
+            <li class="flex items-center gap-2"><span class="text-blue-500 text-xl">✔</span> Completa una solicitud de adopción.</li>
+            <li class="flex items-center gap-2"><span class="text-blue-500 text-xl">✔</span> Nuestro personal revisará tu solicitud y te contactará.</li>
+            <li class="flex items-center gap-2"><span class="text-blue-500 text-xl">✔</span> ¡Lleva a tu nueva mascota a casa!</li>
+        </ul>
+    </div>
+</section>
+
+
+<footer class="bg-gray-800 text-white py-6 mt-8 text-center">
+    <p class="mb-2">© 2023 Tienda de Mascotas. Todos los derechos reservados.</p>
+    <ul class="flex justify-center space-x-4">
+        <li><a href="#" class="hover:text-yellow-400">Términos y condiciones</a></li>
+        <li><a href="#" class="hover:text-yellow-400">Política de privacidad</a></li>
+        <li><a href="#" class="hover:text-yellow-400">Contacto</a></li>
+    </ul>
+</footer>
+
+</body>
+</html>
