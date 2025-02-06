@@ -1,5 +1,6 @@
 package com.example.Mascotas.Servicio;
 
+import com.example.Mascotas.Entidad.Cliente;
 import com.example.Mascotas.Entidad.Producto;
 import com.example.Mascotas.Repositorio.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,10 @@ public class ProductoService {
     @Autowired
     private ProductoRepository productoRepository;
 
+
+    public List<Producto> verProducto() {
+        return productoRepository.findAll();
+    }
 
     public List<Producto> listarProductos() {
         return productoRepository.findAll();

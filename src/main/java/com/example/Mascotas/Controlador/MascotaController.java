@@ -20,8 +20,7 @@ public class MascotaController {
     @Autowired
     private MascotaService mascotaService;
 
-    @Autowired
-    private ClienteService clienteService;
+
 
 
     @GetMapping("/")
@@ -40,7 +39,6 @@ public class MascotaController {
         model.addAttribute("mascotas", mascotaService.listarMascotas());
         return "pages/listadoMascotas";
     }
-
     // LISTADO DE CLIENTES
     @GetMapping("/vistaClientes")
     public String vistaCliente(Model model) {
@@ -66,6 +64,7 @@ public class MascotaController {
         model.addAttribute("producto", new Producto());
         return "pages/listadoProductos";
     }
+
 
     // Crear una nueva mascota (mostrar formulario)
     @GetMapping("/vistaMascota")
@@ -111,15 +110,6 @@ public class MascotaController {
         return "pages/formularioCliente";
     }
 
-    // Crear nuevo cliente (guardar)
-    @PostMapping("/guardarCliente")
-    public String guardarCliente(@Valid Cliente cliente, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("cliente", cliente);
-            return "pages/formularioCliente";
-        }
-        clienteService.guardarCliente(cliente);
-        return "redirect:/listaCliente";
-    }
+
 
 }

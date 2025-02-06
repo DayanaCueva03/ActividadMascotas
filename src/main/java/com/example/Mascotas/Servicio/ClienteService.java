@@ -13,6 +13,10 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
+    public List<Cliente> verCliente() {
+        return clienteRepository.findAll();
+    }
+
     public List<Cliente> listarClientes() {
         return clienteRepository.findAll();
     }
