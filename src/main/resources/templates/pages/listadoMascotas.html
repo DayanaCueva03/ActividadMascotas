@@ -16,8 +16,8 @@
             <li><a th:href="@{/vistaClientes}" class="hover:text-yellow-400">Clientes</a></li>
             <li><a th:href="@{/vistaProductos}" class="hover:text-yellow-400">Productos</a></li>
             <li><a th:href="@{/listaMascota}" class="hover:text-yellow-400">Lista Mascotas</a></li>
-            <li><a th:href="@{/listaCliente}" class="hover:text-yellow-400">Lista Clientes</a></li>
-            <li><a th:href="@{/listaProducto}" class="hover:text-yellow-400">Lista Productos</a></li>
+            <li><a th:href="@{/listaClientes}" class="hover:text-yellow-400">Lista Clientes</a></li>
+            <li><a th:href="@{/listaProductos}" class="hover:text-yellow-400">Lista Productos</a></li>
         </ul>
     </div>
 </nav>
@@ -44,8 +44,8 @@
             <td class="p-2" th:text="${mascota.edad}"></td>
             <td class="p-2" th:text="${mascota.raza}"></td>
             <td class="p-2 flex space-x-2">
-                <a th:href="@{/editarMascota/} + ${mascota.id}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-3 rounded">Editar</a>
-                <a th:href="@{/eliminarMascota/} + ${mascota.id}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Eliminar</a>
+                <a th:href="@{/editarMascotas/} + ${mascota.id}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-3 rounded">Editar</a>
+                <a th:href="@{/eliminarMascotas/} + ${mascota.id}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Eliminar</a>
             </td>
         </tr>
         </tbody>

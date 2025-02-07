@@ -21,48 +21,17 @@ public class MascotaController {
     private MascotaService mascotaService;
 
 
-
-
-    @GetMapping("/")
-    public String vista() {
-        return "index";
-    }
-
     // LISTADO DE MASCOTAS
-    @GetMapping("/vistaMascotas")
+    @GetMapping("/vista")
     public String vistaMascotas(Model model) {
         model.addAttribute("mascotas", mascotaService.verMascotas());
         return "pages/vistaMascota";
     }
+
     @GetMapping("/listaMascota")
     public String listarMascotas(Model model) {
         model.addAttribute("mascotas", mascotaService.listarMascotas());
         return "pages/listadoMascotas";
-    }
-    // LISTADO DE CLIENTES
-    @GetMapping("/vistaClientes")
-    public String vistaCliente(Model model) {
-        model.addAttribute("mascotas", mascotaService.verMascotas());
-        return "pages/vistaCliente";
-    }
-
-    @GetMapping("/listaCliente")
-    public String listadoCliente(Model model) {
-        model.addAttribute("cliente", new Cliente());
-        return "pages/listadoClientes";
-    }
-
-    // LISTADO DE PRODUCTOS
-    @GetMapping("/vistaProductos")
-    public String vistaProducto(Model model) {
-        model.addAttribute("mascotas", mascotaService.verMascotas());
-        return "pages/vistaProducto";
-    }
-
-    @GetMapping("/listaProducto")
-    public String listadoProductos(Model model) {
-        model.addAttribute("producto", new Producto());
-        return "pages/listadoProductos";
     }
 
 
@@ -74,7 +43,7 @@ public class MascotaController {
     }
 
     // Crear nueva mascota (guardar)
-    @PostMapping("/guardar")
+    @PostMapping("/guardarMascotas")
     public String crearMascota(@Valid Mascota mascota, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
 
@@ -82,11 +51,11 @@ public class MascotaController {
             return "pages/formularioMascota";
         }
         mascotaService.guardarMascota(mascota);
-        return "redirect:/listaMascotas";
+        return "redirect:/listaMascota";
     }
 
     // ACTUALIZAR: Mostrar el formulario con los datos de la mascota para editar
-    @GetMapping("/editar/{id}")
+    @GetMapping("/editarMascotas/{id}")
     public String editarMascota(@PathVariable Long id, Model model) {
         Optional<Mascota> mascota = mascotaService.buscarMascota(id);
         if (mascota.isPresent()) {
@@ -97,18 +66,13 @@ public class MascotaController {
     }
 
     // ELIMINAR: Elimina una mascota por ID
-    @GetMapping("/eliminar/{id}")
+    @GetMapping("/eliminarMascotas/{id}")
     public String eliminarMascota(@PathVariable Long id) {
         mascotaService.eliminarMascota(id);
-        return "redirect:/listaMascotas";
+        return "redirect:/listaMascota";
     }
 
-    // Crear una nueva mascota para cliente (mostrar formulario)
-    @GetMapping("/vistaCliente")
-    public String mostrarFormularioCliente(Model model) {
-        model.addAttribute("cliente", new Cliente());
-        return "pages/formularioCliente";
-    }
+
 
 
 

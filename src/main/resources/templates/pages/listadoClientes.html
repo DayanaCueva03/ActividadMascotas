@@ -16,8 +16,8 @@
       <li><a th:href="@{/vistaClientes}" class="hover:text-yellow-400">Clientes</a></li>
       <li><a th:href="@{/vistaProductos}" class="hover:text-yellow-400">Productos</a></li>
       <li><a th:href="@{/listaMascota}" class="hover:text-yellow-400">Lista Mascotas</a></li>
-      <li><a th:href="@{/listaCliente}" class="hover:text-yellow-400">Lista Clientes</a></li>
-      <li><a th:href="@{/listaProducto}" class="hover:text-yellow-400">Lista Productos</a></li>
+      <li><a th:href="@{/listaClientes}" class="hover:text-yellow-400">Lista Clientes</a></li>
+      <li><a th:href="@{/listaProductos}" class="hover:text-yellow-400">Lista Productos</a></li>
     </ul>
   </div>
 </nav>
@@ -43,8 +43,8 @@
       <td class="p-2" th:text="${cliente.telefono}"></td>
       <td class="p-2" th:text="${cliente.direccion}"></td>
       <td class="p-2 flex space-x-2">
-        <a th:href="@{/editarCliente/} + ${cliente.id}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-3 rounded">Editar</a>
-        <a th:href="@{/eliminarCliente/} + ${cliente.id}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Eliminar</a>
+        <a th:href="@{/editarClientes/} + ${cliente.id}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-3 rounded">Editar</a>
+        <a th:href="@{/eliminarClientes/} + ${cliente.id}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Eliminar</a>
       </td>
     </tr>
     </tbody>
