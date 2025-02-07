@@ -26,8 +26,9 @@ public class Producto {
     @NotBlank(message = "La descripción es obligatoria")
     private String descripcion;
 
-    @ManyToMany(mappedBy = "productos")
-    private List<Mascota> mascotas;
+    @OneToMany(mappedBy = "producto")
+    private List<Reporte> reporte;
+
 
     // Getters and setters
     public Long getId() {
@@ -68,5 +69,13 @@ public class Producto {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public List<Reporte> getReporte() {
+        return reporte;
+    }
+
+    public void setReporte(List<Reporte> reporte) {
+        this.reporte = reporte;
     }
 }

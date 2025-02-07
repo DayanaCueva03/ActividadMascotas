@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Reportes</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="bg-gray-100">
+<nav class="bg-gray-800 text-white p-4 shadow-md">
+  <div class="container mx-auto flex justify-between items-center">
+    <a href="/" class="text-2xl font-bold hover:text-yellow-400">Tienda de Mascotas</a>
+    <ul class="flex space-x-6">
+      <li><a href="/" class="hover:text-yellow-400">Inicio</a></li>
+      <li><a th:href="@{/vista}" class="hover:text-yellow-400">Mascotas</a></li>
+      <li><a th:href="@{/vistaClientes}" class="hover:text-yellow-400">Clientes</a></li>
+      <li><a th:href="@{/vistaProductos}" class="hover:text-yellow-400">Productos</a></li>
+      <li><a th:href="@{/formularioReporte}" class="hover:text-yellow-400">Formulario Reporte</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-8 mt-10">
+  <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Lista de Reportes</h2>
+  <div class="flex justify-end mb-4">
+    <a href="/formularioReporte" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Nuevo Reporte</a>
+  </div>
+  <div class="overflow-x-auto">
+    <table class="min-w-full border-collapse border border-gray-300 shadow-md rounded-lg">
+      <thead>
+      <tr class="bg-gray-800 text-white">
+        <th class="px-4 py-2">ID</th>
+        <th class="px-4 py-2">ID Cliente</th>
+        <th class="px-4 py-2">ID Producto</th>
+        <th class="px-4 py-2">Cantidad</th>
+        <th class="px-4 py-2">Fecha de Adquisición</th>
+        <th class="px-4 py-2">Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="reporte : ${reportes}" class="border-b border-gray-200 hover:bg-gray-100">
+        <td class="px-4 py-2 text-center" th:text="${reporte.id}"></td>
+        <td th:text="${reporte.clientes != null ? reporte.clientes.id : 'N/A'}"></td>
+        <td th:text="${reporte.clientes != null ? reporte.producto.id : 'N/A'}"></td>
+
+        <td class="px-4 py-2 text-center" th:text="${reporte.cantidad}"></td>
+        <td class="px-4 py-2 text-center" th:text="${reporte.fechaAdquisicion}"></td>
+        <td class="px-4 py-2 text-center">
+          <a th:href="@{/reportes/editar/{id}(id=${reporte.id})}" class="px-3 py-1 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600">Editar</a>
+          <a th:href="@{/eliminar/{id}(id=${reporte.id})}" onclick="return confirm('¿Estás seguro?')" class="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 ml-2">Eliminar</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<footer class="bg-gray-800 text-white py-6 mt-10">
+  <div class="container mx-auto text-center">
+    <p class="mb-4">© 2023 Tienda de Mascotas. Todos los derechos reservados.</p>
+    <ul class="flex justify-center space-x-4">
+      <li><a href="#" class="hover:text-yellow-400">Términos y condiciones</a></li>
+      <li><a href="#" class="hover:text-yellow-400">Política de privacidad</a></li>
+      <li><a href="#" class="hover:text-yellow-400">Contacto</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

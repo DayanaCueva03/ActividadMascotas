@@ -17,16 +17,14 @@
             <li><a th:href="@{/vistaClientes}" class="hover:text-yellow-400 transition duration-300">Clientes</a></li>
             <li><a th:href="@{/vistaProductos}" class="hover:text-yellow-400 transition duration-300">Productos</a></li>
             <li><a th:href="@{/listaMascota}" class="hover:text-yellow-400 transition duration-300">Lista Mascotas</a></li>
-            <li><a th:href="@{/listaClientes}" class="hover:text-yellow-400 transition duration-300">Lista Clientes</a></li>
-            <li><a th:href="@{/listaProductos}" class="hover:text-yellow-400 transition duration-300">Lista Productos</a></li>
-        </ul>
+             </ul>
     </div>
 </nav>
 
 <!-- Main Content -->
 <div class="container mx-auto mt-8 p-4 bg-white rounded-lg shadow-lg flex-grow">
     <h2 class="text-2xl font-bold mb-6 text-gray-800">Registro de Mascota</h2>
-    <form th:action="@{/guardar}" method="post" th:object="${mascota}">
+    <form th:action="@{/guardarMascotas}" method="post" th:object="${mascota}">
         <div class="mb-4">
             <input type="number" class="form-control hidden" id="id-codigo" th:field="*{id}">
         </div>

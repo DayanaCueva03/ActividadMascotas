@@ -29,15 +29,6 @@ public class Mascota {
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
-    @ManyToMany
-    @JoinTable(
-            name = "mascota_producto",
-            joinColumns = @JoinColumn(name = "mascota_id"),
-            inverseJoinColumns = @JoinColumn(name = "producto_id")
-    )
-    private List<Producto> productos = new ArrayList<>();
-
-    // Getters y Setters
     public Long getId() {
         return id;
     }
@@ -46,35 +37,36 @@ public class Mascota {
         this.id = id;
     }
 
-    public String getNombre() {
+    public @NotBlank(message = "El nombre es obligatorio.") String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombre(@NotBlank(message = "El nombre es obligatorio.") String nombre) {
         this.nombre = nombre;
     }
 
-    public String getTipo() {
+    public @NotBlank(message = "El tipo de mascota es obligatorio.") String getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(@NotBlank(message = "El tipo de mascota es obligatorio.") String tipo) {
         this.tipo = tipo;
     }
 
+    @Min(value = 0, message = "La edad debe ser un número positivo.")
     public int getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(@Min(value = 0, message = "La edad debe ser un número positivo.") int edad) {
         this.edad = edad;
     }
 
-    public String getRaza() {
+    public @NotBlank(message = "La raza es obligatoria.") String getRaza() {
         return raza;
     }
 
-    public void setRaza(String raza) {
+    public void setRaza(@NotBlank(message = "La raza es obligatoria.") String raza) {
         this.raza = raza;
     }
 
@@ -84,22 +76,5 @@ public class Mascota {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
-    }
-
-    public List<Producto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
-    }
-
-
-    public void addProducto(Producto producto) {
-        this.productos.add(producto);
-    }
-
-    public void removeProducto(Producto producto) {
-        this.productos.remove(producto);
     }
 }

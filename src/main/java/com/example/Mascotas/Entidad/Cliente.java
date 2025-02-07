@@ -28,7 +28,10 @@ public class Cliente {
     private String direccion;
 
     @OneToMany(mappedBy = "cliente")
-    private List<Mascota> mascotas;
+    private List<Mascota> mascota;
+
+    @OneToMany(mappedBy = "clientes")
+    private List<Reporte> reporte;
 
     // Getters y Setters
     public Long getId() {
@@ -71,11 +74,19 @@ public class Cliente {
         this.direccion = direccion;
     }
 
-    public List<Mascota> getMascotas() {
-        return mascotas;
+    public List<Mascota> getMascota() {
+        return mascota;
     }
 
-    public void setMascotas(List<Mascota> mascotas) {
-        this.mascotas = mascotas;
+    public void setMascota(List<Mascota> mascota) {
+        this.mascota = mascota;
+    }
+
+    public List<Reporte> getReporte() {
+        return reporte;
+    }
+
+    public void setReporte(List<Reporte> reporte) {
+        this.reporte = reporte;
     }
 }

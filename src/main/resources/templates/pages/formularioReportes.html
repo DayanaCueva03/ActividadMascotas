@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario de Reporte</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="bg-gray-100">
+<nav class="bg-gray-800 text-white p-4 shadow-md">
+  <div class="container mx-auto flex justify-between items-center">
+    <a href="/" class="text-2xl font-bold hover:text-yellow-400">Tienda de Mascotas</a>
+    <ul class="flex space-x-6">
+      <li><a href="/" class="hover:text-yellow-400">Inicio</a></li>
+      <li><a th:href="@{/vista}" class="hover:text-yellow-400">Mascotas</a></li>
+      <li><a th:href="@{/vistaClientes}" class="hover:text-yellow-400">Clientes</a></li>
+      <li><a th:href="@{/vistaProductos}" class="hover:text-yellow-400">Productos</a></li>
+      <li><a th:href="@{/formularioReporte}" class="hover:text-yellow-400">Formulario Reporte</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-8 mt-10">
+  <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Formulario de Reporte</h2>
+  <form th:action="@{/guardarReporte}" th:object="${reporte}" method="post" class="space-y-4">
+    <input type="text" th:field="*{id}">
+
+    <div>
+      <label class="block text-gray-700 font-semibold">ID Cliente:</label>
+      <select th:field="*{clientes.id}" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-yellow-400">
+        <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nombre}"></option>
+      </select>
+    </div>
+
+    <div>
+      <label class="block text-gray-700 font-semibold">ID Producto:</label>
+      <select th:field="*{producto.id}" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-yellow-400">
+        <option th:each="producto : ${productos}" th:value="${producto.id}" th:text="${producto.nombre}"></option>
+      </select>
+    </div>
+
+    <div>
+      <label class="block text-gray-700 font-semibold">Cantidad:</label>
+      <input type="number" th:field="*{cantidad}" required class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-yellow-400">
+    </div>
+
+    <div>
+      <label class="block text-gray-700 font-semibold">Fecha de Adquisición:</label>
+      <input type="date" th:field="*{fechaAdquisicion}" required class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-yellow-400">
+    </div>
+
+    <div class="flex justify-between mt-6">
+      <a th:href="@{/}" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700">Volver</a>
+      <button type="submit" class="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600">Guardar</button>
+    </div>
+  </form>
+</div>
+
+<footer class="bg-gray-800 text-white py-6 mt-10">
+  <div class="container mx-auto text-center">
+    <p class="mb-4">© 2023 Tienda de Mascotas. Todos los derechos reservados.</p>
+    <ul class="flex justify-center space-x-4">
+      <li><a href="#" class="hover:text-yellow-400">Términos y condiciones</a></li>
+      <li><a href="#" class="hover:text-yellow-400">Política de privacidad</a></li>
+      <li><a href="#" class="hover:text-yellow-400">Contacto</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

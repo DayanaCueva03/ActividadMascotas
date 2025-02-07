@@ -12,12 +12,11 @@
         <a href="/" class="text-2xl font-bold hover:text-yellow-400">Tienda de Mascotas</a>
         <ul class="flex space-x-6">
             <li><a href="/" class="hover:text-yellow-400">Inicio</a></li>
-            <li><a th:href="@{/vistaMascotas}" class="hover:text-yellow-400">Mascotas</a></li>
+            <li><a th:href="@{/vista}" class="hover:text-yellow-400">Mascotas</a></li>
             <li><a th:href="@{/vistaClientes}" class="hover:text-yellow-400">Clientes</a></li>
             <li><a th:href="@{/vistaProductos}" class="hover:text-yellow-400">Productos</a></li>
-            <li><a th:href="@{/listaMascota}" class="hover:text-yellow-400">Lista Mascotas</a></li>
-            <li><a th:href="@{/listaClientes}" class="hover:text-yellow-400">Lista Clientes</a></li>
-            <li><a th:href="@{/listaProductos}" class="hover:text-yellow-400">Lista Productos</a></li>
+             <li><a th:href="@{/listaClientes}" class="hover:text-yellow-400">Lista Clientes</a></li>
+
         </ul>
     </div>
 </nav>
@@ -26,6 +25,7 @@
     <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Añadir Cliente</h2>
 
     <form th:action="@{/guardarClientes}" th:object="${cliente}" method="post" class="max-w-lg mx-auto">
+        <input type="hidden" th:field="*{id}">
 
         <div class="mb-4">
             <label for="nombre" class="block" style="font-weight: 600; color: #374151;">Nombre</label>
